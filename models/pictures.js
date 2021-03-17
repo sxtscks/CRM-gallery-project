@@ -19,4 +19,6 @@ const picturesSchema = new Schema({
   },
 })
 
-module.exports = model('pictures', picturesSchema)
+const Picture = model('users', picturesSchema)
+
+module.exports = Picture

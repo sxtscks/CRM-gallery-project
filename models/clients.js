@@ -37,4 +37,6 @@ const clientSchema = new Schema({
   { timestamps: true }
 )
 
-module.exports = model('clients', clientSchema)
+const Client = model('users', clientSchema)
+
+module.exports = Client
