@@ -1,7 +1,7 @@
 const { model, Schema } = require('mongoose')
 
 const clientSchema = new Schema({
-  company: {
+  companyName: {
     type: String,
     required: true
   },
@@ -22,7 +22,19 @@ const clientSchema = new Schema({
   },
   notes: {
     type: String
-  }
-})
+  },
+  picturesLiked: [{
+    type: Schema.Types.ObjectId,
+    ref: 'pictures'
+  }],
+  picturesBought: [{
+    type: Schema.Types.ObjectId,
+    ref: 'pictures'
+  }],
+  createdAt: String,
+  updatedAt: Date,
+},
+  { timestamps: true }
+)
 
 module.exports = model('clients', clientSchema)
