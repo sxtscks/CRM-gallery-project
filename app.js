@@ -7,16 +7,26 @@ const FileStore = require('session-file-store')(session)
 const mongoose = require('mongoose')
 
 
+const indexRouter = require('./routes/index')
+const signupRouter = require('./routes/signup')
+const loginRouter = require('./routes/login')
+
+
 const app = express();
 const PORT = 3000
 
 app.set('view engine', 'hbs')
+hbs.registerPartials(path.join(process.env.PWD, 'views', 'partials'))
 app.set('views', path.join(process.env.PWD, 'views'))
 
 app.use(logger('dev'))
 app.use(express.json())
 app.use(express.urlencoded({ extended: true }))
 app.use(express.static(path.join(process.env.PWD, 'public')))
+
+app.use('/', indexRouter);
+app.use('/signup', signupRouter)
+app.use('/login', loginRouter)
 
 
 app.listen(PORT, () => {
