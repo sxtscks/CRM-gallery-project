@@ -1,0 +1,32 @@
+<h1>Добавление нового клиента</h1>
+
+<form method="POST">
+  <div class="form-group">
+    <label for="formGroupExampleInput">Имя</label>
+    <input name='clientName' type="text" class="form-control" id="formGroupExampleInput"
+      placeholder="ФИО или название компании">
+  </div>
+  <div class="form-group">
+    <label for="formGroupExampleInput2">Телефон</label>
+    <input name='clientPhone' type="phone" class="form-control" id="formGroupExampleInput2" placeholder="Общий телефон">
+  </div>
+  <div class="form-group">
+    <label for="formGroupExampleInput2">Контактное лицо</label>
+    <input name='contactPerson' type="text" class="form-control" id="formGroupExampleInput2"
+      placeholder="Контактное лицо">
+  </div>
+  <div class="form-group">
+    <label for="formGroupExampleInput2">Личный телефон</label>
+    <input name='personalPhone' type="phone" class="form-control" id="formGroupExampleInput2"
+      placeholder="Личный телефон">
+  </div>
+  <div class="form-group">
+    <label for="formGroupExampleInput2">Email</label>
+    <input name='companyEmail' type="email" class="form-control" id="formGroupExampleInput2" placeholder="Email">
+  </div>
+  <div class="form-group">
+    <label for="exampleFormControlTextarea1">Комментарии</label>
+    <textarea name='notes' class="form-control" id="exampleFormControlTextarea1" rows="3"></textarea>
+  </div>
+  <button type="submit" class="btn btn-primary">Добавить</button>
+</form>
