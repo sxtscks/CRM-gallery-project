@@ -12,6 +12,7 @@ const signupRouter = require('./routes/signup')
 const loginRouter = require('./routes/login')
 const signoutRouter = require('./routes/signout')
 const clientsRouter = require('./routes/clients')
+const cardRouter = require('./routes/card')
 const addRouter = require('./routes/add')
 
 
@@ -55,6 +56,7 @@ app.use('/signup', signupRouter)
 app.use('/login', loginRouter)
 app.use('/signout', signoutRouter)
 app.use('/clients', clientsRouter)
+app.use('/card', cardRouter)
 app.use('/add', addRouter)
 
 
