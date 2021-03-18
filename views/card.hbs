@@ -62,13 +62,14 @@
             </div>
           </div>
         </div>
+        <a href="/card/{{client._id}}/edit">Изменить</a>
       </div>
       <div class="col-lg-8 col-md-8 col-xs-12">
         <div class="panel">
           <div class="panel-body">
             <ul id="myTab" class="nav nav-pills">
               <li class="active"><a href="#detail" data-toggle="tab">О компании</a></li>
-              <li class=""><a href="#contact" data-toggle="tab">Изменить</a></li>
+              <li class=""><a href="/card/{{client._id}}/edit">Изменить</a></li>
               {{#if role}}
               <button type="button" class="btn btn-danger" data-toggle="modal" data-target="#exampleModalCenter">
   Удалить
