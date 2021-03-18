@@ -11,6 +11,7 @@ const indexRouter = require('./routes/index')
 const signupRouter = require('./routes/signup')
 const loginRouter = require('./routes/login')
 const signoutRouter = require('./routes/signout')
+const clientsRouter = require('./routes/clients')
 
 
 const app = express();
@@ -29,7 +30,7 @@ app.use(session({
   saveUninitialized: false,
   store: new FileStore({
     secret: secretKey,
-  }),  //НЕ СОХРАНЯЕТ СЕССИИ В ПАПКУ, ИСПРАВИТЬ
+  }),
   cookie: {
     httpOnly: true,
     maxAge: 86400 * 1e3,
@@ -52,6 +53,7 @@ app.use('/', indexRouter);
 app.use('/signup', signupRouter)
 app.use('/login', loginRouter)
 app.use('/signout', signoutRouter)
+app.use('/clients', clientsRouter)
 
 
 app.listen(PORT, () => {
