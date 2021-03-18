@@ -12,7 +12,8 @@ const managerSchema = new Schema({
   password: {
     type: String,
     required: true
-  }
+  }, 
+  role: Boolean
 })
 
 const Manager = model('manager', managerSchema)

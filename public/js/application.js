@@ -1,20 +1,15 @@
 const editForm = document.querySelector('#editForm');
-// const id = document.dataset.clientid.value;
-// console.log(id);
-
 
 if (editForm) {
   editForm.addEventListener('submit', async(e) => {
     e.preventDefault();
 
     const formFields = Object.fromEntries((new FormData(editForm)).entries());
-    console.log(formFields);
-    // console.log(editForm.parentNode);
-
     formFields._id = e.target.dataset.clientid;
 
-    console.log(formFields._id)
-    const response = await fetch(`http://localhost:3000/clients/${e.target.dataset.clientid}/edit`, {
+    console.log(e.target.dataset.clientid);
+
+    const response = await fetch(`/card/${e.target.dataset.clientid}/edit`, {
       method: 'PATCH',
       headers: {
         'Content-Type': 'application/json',
@@ -34,3 +29,25 @@ if (editForm) {
 
   })
 } 
+
+
+const deleteButton = document.querySelector('[data-delete]')
+
+if (deleteButton){
+
+deleteButton.addEventListener('click', async (event) => {
+  event.preventDefault()
+  console.log('>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>', event.target);
+  const deleteId = event.target.dataset.delete
+  console.log(deleteId);
+  const response = await fetch(`/card/${deleteId}`, {
+    method: "DELETE"
+  })
+
+  if (response.status === 200) {
+    window.location.replace('/clients')
+  } else {
+    console.log('ERROR');
+  }
+})
+}
