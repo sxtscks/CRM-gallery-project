@@ -69,9 +69,11 @@
             <ul id="myTab" class="nav nav-pills">
               <li class="active"><a href="#detail" data-toggle="tab">О компании</a></li>
               <li class=""><a href="#contact" data-toggle="tab">Изменить</a></li>
+              {{#if role}}
               <button type="button" class="btn btn-danger" data-toggle="modal" data-target="#exampleModalCenter">
   Удалить
 </button>
+{{/if}}
 {{> modal}}
             </ul>
             <div id="myTabContent" class="tab-content">
