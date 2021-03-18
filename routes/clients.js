@@ -7,4 +7,13 @@ router.get('/', async (req, res) => {
   res.render('clients', { Clients });
 });
 
+router.get('/:id/edit', async(req, res) => { 
+  const client = await Client.findById(req.params.id);
+  res.render('edit', { client });
+});
+
+router.patch('/:id/edit', async(req, res) => {
+  
+})
+
 module.exports = router;
