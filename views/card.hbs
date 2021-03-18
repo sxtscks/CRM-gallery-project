@@ -59,7 +59,6 @@
           <div class="panel-body">
             <div class="text-center" id="author">
               <h3>{{client.companyName}}</h3>
-              <small class="label label-warning">Волгоград</small>
             </div>
           </div>
         </div>
@@ -69,16 +68,18 @@
           <div class="panel-body">
             <ul id="myTab" class="nav nav-pills">
               <li class="active"><a href="#detail" data-toggle="tab">О компании</a></li>
-              <li class=""><a href="#contact" data-toggle="tab">Изменить</a></li>
-              <li class=""><button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal">
-  Запустить модальное окно
-</button> </li>
-              
+              <li class=""><a href="/card/{{client._id}}/edit">Изменить</a></li>
+              {{#if role}}
+              <button type="button" class="btn btn-danger" data-toggle="modal" data-target="#exampleModalCenter">
+  Удалить
+</button>
+{{/if}}
+{{> modal}}
             </ul>
             <div id="myTabContent" class="tab-content">
               <hr>
               <div class="tab-pane fade active in" id="detail">
-                <h4>История профиля</h4>
+                <h4>Информация</h4>
                 <table class="table table-th-block">
                   <tbody>
                     <tr>
@@ -150,3 +151,9 @@
 
 </div><!-- /.main -->
 </div><!-- /.container -->
+
+<script>
+  $('#myModal').on('shown.bs.modal', function () {
+  $('#myInput').trigger('focus')
+})
+</script>
