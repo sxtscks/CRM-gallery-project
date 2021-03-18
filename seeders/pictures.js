@@ -11,13 +11,57 @@ async function main() {
   
   const pictures = [
     {
-      title: "Salsif",
-      author: "u"
+      title: "Боровск. Ледоход",
+      author: "Вера Ельницкая",
+      cost: 80000,
+      image: ''
+    },
+    {
+      title: "Яхты",
+      author: "Вера Ельницкая",
+      cost: 90000,
+      image: ''
+    },
+    {
+      title: "Кораблик",
+      author: "Вера Ельницкая",
+      cost: 80000,
+      image: ''
+    },
+    {
+      title: "Пастырь",
+      author: "Игорь Сапунков",
+      cost: 100000,
+      image: ''
+    },
+    {
+      title: "Сугробы",
+      author: "Игорь Сапунков",
+      cost: 70000,
+      image: ''
+    },
+    {
+      title: "Окуни",
+      author: "Никита Павлов",
+      cost: 70000,
+      image: ''
+    },
+    {
+      title: "Москва. Черемушки",
+      author: "Никита Павлов",
+      cost: 90000,
+      image: ''
+    },
+    {
+      title: "Мамины цветы",
+      author: "Никита Павлов",
+      cost: 90000,
+      image: ''
     },
     
   ];
   
-  await Entry.insertMany(pictures);
+  await Picture.insertMany(pictures);
   await connection.close();
 }
 
