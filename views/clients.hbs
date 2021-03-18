@@ -5,7 +5,6 @@
 <table class="table table-striped">
   <thead>
     <tr>
-      <th scope="col"></th>
       <th scope="col">Имя / Компания</th>
       <th scope="col">Телефон</th>
       <th scope="col">Дата создания</th>
@@ -14,10 +13,9 @@
   <tbody>
     {{#each Clients}}
     <tr onclick="window.location.href='/card/{{this._id}}'; return false">
-      <th scope="row">N order</th>
-      <td>{{this.companyName}}</td>
-      <td>{{this.phone}}</td>
-      <td>{{this.createdAt}}</td>
+      <td class="hover-td">{{this.companyName}}</td>
+      <td class="hover-td">{{this.phone}}</td>
+      <td class="hover-td">{{this.createdAt}}</td>
     </tr>
     {{/each}}
   </tbody>
