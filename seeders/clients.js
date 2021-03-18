@@ -15,49 +15,49 @@ async function main() {
       title: "Боровск. Ледоход",
       author: "Вера Ельницкая",
       cost: 80000,
-      image: ''
+      image: "/img/elnitskaya/borovsk.jpg",
     },
     {
       title: "Яхты",
       author: "Вера Ельницкая",
       cost: 90000,
-      image: ''
+      image: "/img/elnitskaya/yahti.jpg"
     },
     {
       title: "Кораблик",
       author: "Вера Ельницкая",
       cost: 80000,
-      image: ''
+      image: "/img/elnitskaya/korablik.jpg"
     },
     {
       title: "Пастырь",
       author: "Игорь Сапунков",
       cost: 100000,
-      image: ''
+      image: "/img/sapunkov/pastir.jpg"
     },
     {
       title: "Сугробы",
       author: "Игорь Сапунков",
       cost: 70000,
-      image: ''
+      image: "/img/sapunkov/sugrobi.jpg"
     },
     {
       title: "Окуни",
       author: "Никита Павлов",
       cost: 70000,
-      image: ''
+      image: "/img/pavlov/okuni.jpg"
     },
     {
       title: "Москва. Черемушки",
       author: "Никита Павлов",
       cost: 90000,
-      image: ''
+      image: "/img/pavlov/omoskva_cheremushki.jpg"
     },
     {
       title: "Мамины цветы",
       author: "Никита Павлов",
       cost: 90000,
-      image: ''
+      image: "/img/pavlov/mamini_cveti.jpg"
     },
     
   ];
