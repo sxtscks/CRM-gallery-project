@@ -29,7 +29,7 @@ app.use(session({
   saveUninitialized: false,
   store: new FileStore({
     secret: secretKey,
-  }),
+  }),  //НЕ СОХРАНЯЕТ СЕССИИ В ПАПКУ, ИСПРАВИТЬ
   cookie: {
     httpOnly: true,
     maxAge: 86400 * 1e3,
