@@ -1,0 +1,33 @@
+{{!-- {{#if client}} --}}
+
+<form id="editForm" class="container mt-5" data-clientid="{{client._id}}">
+  <div class="col-md-4">
+    <label for="validationCustom01" class="form-label">Название компании</label>
+    <input name="companyName" data-new-company-name="newCompanyName" type="text" class="form-control" id="validationCustom01" value="{{client.companyName}}" required>
+  </div>
+  <div class="col-md-4">
+    <label for="validationCustom01" class="form-label">Телефон общий</label>
+    <input name="phone" data-new-phone="newPhone"  type="text" class="form-control" id="validationCustom01" value="{{client.phone}}" required>
+  </div>
+  <div class="col-md-4">
+    <label for="validationCustom01" class="form-label">Контактное лицо</label>
+    <input name="contactPerson" data-new-contact="newContact" type="text" class="form-control" id="validationCustom01" value="{{client.contactPerson}}" required>
+  </div>
+  <div class="col-md-4">
+    <label for="validationCustom01" class="form-label">Телефон личный</label>
+    <input name="personalPhone" data-new-personal-phone="newPersonalPhone" type="text" class="form-control" id="validationCustom01" value="{{client.personalPhone}}">
+  </div>
+  <div class="col-md-4">
+    <label for="validationCustom01" class="form-label">E-mail</label>
+    <input name="email" data-new-email="newEmail" type="text" class="form-control" id="validationCustom01" value="{{client.email}}" required>
+  </div>
+  <div class="col-md-4">
+    <label for="validationCustom01" class="form-label">Комментарии</label>
+    <textarea name="notes" data-new-notes="newNotes" type="text" class="form-control" id="validationCustom01" value="{{client.notes}}">
+    </textarea>
+  </div>
+  <button class="btn btn-primary mt-5" type="submit">Сохранить изменения</button>
+</form>
+{{!-- {{/if}} --}}
+
+<div id="errormessage"></div>

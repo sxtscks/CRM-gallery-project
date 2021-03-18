@@ -18,6 +18,7 @@ router.post('/', async (req, res) => {
     req.session.userId = newUser._id
     req.session.email = newUser.email
     req.session.name = newUser.name
+    req.session.role = newUser.role
 
     return res.redirect('/')
   }

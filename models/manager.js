@@ -3,7 +3,7 @@ const { model, Schema } = require('mongoose')
 const managerSchema = new Schema({
   name: {
     type: String,
-    required: true
+    required: true,
   },
   email: {
     type: String,
@@ -12,9 +12,13 @@ const managerSchema = new Schema({
   },
   password: {
     type: String,
-    required: true
+    required: true,
   }, 
-  role: Boolean
+  role: {
+    type: Boolean,
+    default: false,
+  }
+
 })
 
 const Manager = model('manager', managerSchema)
