@@ -5,3 +5,8 @@
 .navMainText {
   font-size: 35px;
 }
+
+.hover-td {
+  cursor: pointer;
+} 
+
