@@ -1,6 +1,6 @@
 <h1 class='clientsText'>Клиенты</h1>
 <div class='add'>
-  <a class="btn btn-primary myButt" href="/add" role="button">Add</a>
+  <a class="btn btn-primary myButt" href="/add" role="button">Добавить</a>
 </div>
 
 <form id="search" method="POST" action="/search">
@@ -8,7 +8,7 @@
     <select name="select" class="form-select" aria-label="Default select example">
       <option selected value="companyName">Имя</option>
       <option value="createdAt">Дата создания</option>
-      <option value="Автор картины">Автор картины</option>
+      {{!-- <option value="Автор картины">Автор картины</option> --}}
       <option value="phone">Телефон</option>
     </select>
     <input name="search" type="search" id="form1" class="form-control" />
