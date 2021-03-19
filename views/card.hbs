@@ -71,10 +71,10 @@
               <li class=""><a href="/card/{{client._id}}/edit">Изменить</a></li>
               {{#if role}}
               <button type="button" class="btn btn-danger" data-toggle="modal" data-target="#exampleModalCenter">
-  Удалить
-</button>
-{{/if}}
-{{> modal}}
+                Удалить
+              </button>
+              {{/if}}
+              {{> modal}}
             </ul>
             <div id="myTabContent" class="tab-content">
               <hr>
@@ -141,68 +141,68 @@
                   </div>
                 </form>
               </div>
-              </div>
             </div>
           </div>
         </div>
       </div>
     </div>
-
-    <div class="col-lg-12 col-md-12 col-xs-12">
-        <div class="panel panel-default">
-          <div class="panel-heading">
-            <header class="panel-title">
-              <div class="text-center">
-                <strong>Понравившиеся картины</strong>
-              </div>
-            </header>
-          </div>
-          <div class="panel-body d-flex justify-content-between">
-            {{#each client.picturesLiked}}
-              <div>
-                <img width="300" height="300" class="pictures" src="{{this.image}}" value="{{this.title}}"> 
-                <p>Название: {{this.title}}</p>
-                <p>Автор:  {{this.author}}</p> 
-              </div>
-            {{/each}}
-          </div>
-        </div>
-    </div>
-    <div class="col-lg-12 col-md-12 col-xs-12">
-        <div class="panel panel-default">
-          <div class="panel-heading">
-            <header class="panel-title">
-              <div class="text-center">
-                <strong>Купленные картины</strong>
-              </div>
-            </header>
-          </div>
-          <div class="panel-body d-flex justify-content-between">
-            <div>
-                {{#each client.picturesBought}}
-                <div>
-                  <img width="300" height="300" class="pictures" src="{{this.image}}" value="{{this.title}}"> 
-                  <p>Название: {{this.title}}</p>
-                  <p>Автор:  {{this.author}}</p> 
-                </div>
-                {{/each}}
-
-            </div>
-          </div>
-        </div>
-    </div>
   </div>
 
-    
+  <div class="col-lg-12 col-md-12 col-xs-12">
+    <div class="panel panel-default">
+      <div class="panel-heading">
+        <header class="panel-title">
+          <div class="text-center">
+            <strong>Понравившиеся картины</strong>
+          </div>
+        </header>
+      </div>
+      <div class="panel-body d-flex justify-content-between">
+        {{#each client.picturesLiked}}
+        <div>
+          <img width="300" height="300" class="pictures" src="{{this.image}}" value="{{this.title}}">
+          <p>Название: {{this.title}}</p>
+          <p>Автор: {{this.author}}</p>
+        </div>
+        {{/each}}
+      </div>
+    </div>
+  </div>
+  <div class="col-lg-12 col-md-12 col-xs-12">
+    <div class="panel panel-default">
+      <div class="panel-heading">
+        <header class="panel-title">
+          <div class="text-center">
+            <strong>Купленные картины</strong>
+          </div>
+        </header>
+      </div>
+      <div class="panel-body d-flex justify-content-between">
+        <div>
+          {{#each client.picturesBought}}
+          <div>
+            <img width="300" height="300" class="pictures" src="{{this.image}}" value="{{this.title}}">
+            <p>Название: {{this.title}}</p>
+            <p>Автор: {{this.author}}</p>
+          </div>
+          {{/each}}
+
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
 
 
-  
+
+
+
 
 </div><!-- /.main -->
 </div><!-- /.container -->
 
 <script>
   $('#myModal').on('shown.bs.modal', function () {
-  $('#myInput').trigger('focus')
-})
+    $('#myInput').trigger('focus')
+  })
 </script>

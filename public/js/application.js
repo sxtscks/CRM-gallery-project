@@ -7,7 +7,6 @@ if (editForm) {
     const formFields = Object.fromEntries((new FormData(editForm)).entries());
     formFields._id = e.target.dataset.clientid;
 
-    console.log(e.target.dataset.clientid);
 
     const response = await fetch(`/card/${e.target.dataset.clientid}/edit`, {
       method: 'PATCH',
@@ -24,7 +23,7 @@ if (editForm) {
       return;
     }
 
-    if (response.status === 200) window.location.replace('/clients');
+    if (response.status === 200) window.location.replace(`/card/${e.target.dataset.clientid}`);
     errorDiv.innerText = '';
 
   })
@@ -37,9 +36,7 @@ if (deleteButton){
 
 deleteButton.addEventListener('click', async (event) => {
   event.preventDefault()
-  console.log('>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>', event.target);
   const deleteId = event.target.dataset.delete
-  console.log(deleteId);
   const response = await fetch(`/card/${deleteId}`, {
     method: "DELETE"
   })

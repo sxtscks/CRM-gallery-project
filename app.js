@@ -52,17 +52,18 @@ app.use(express.json())
 app.use(express.urlencoded({ extended: true }))
 app.use(express.static(path.join(process.env.PWD, 'public')))
 
-app.use((req, res, next) => {
-  res.header('Acces-Control-Allow-Origin', '*')
-  res.header('Acces-Control-Allow-Headers', 'Content-Type, Accept, Authorization')
 
-  if (req.method === "OPTIONS") {
-    res.header('Acces-Control-Allow-Methods', 'GET, POST, PUT, PATCH, DELETE')
-    return res.json()
-  }
+// app.use((req, res, next) => {
+//   res.header('Acces-Control-Allow-Origin', '*')
+//   res.header('Acces-Control-Allow-Headers', 'Content-Type, Accept, Authorization')
 
-  next()
-})
+//   if (req.method === "OPTIONS") {
+//     res.header('Acces-Control-Allow-Methods', 'GET, POST, PUT, PATCH, DELETE')
+//     return res.json()
+//   }
+
+//   next()
+// })
 
 // app.use(cors())
 
@@ -82,13 +83,13 @@ app.use('/card', cardRouter)
 app.use('/add', addRouter)
 
 
-// app.listen(PORT, () => {
-//   console.log('Server started');
-//   mongoose.connect('mongodb://localhost:27017/CRM-gallery-project', { useNewUrlParser: true, useUnifiedTopology: true }, () => {
-//     console.log('Подключено к базе данных!');
-//   })
-// })
-
 app.listen(PORT, () => {
-  console.log('Сервер газанул ', PORT)
+  console.log('Server started');
+  mongoose.connect('mongodb://localhost:27017/CRM-gallery-project', { useNewUrlParser: true, useUnifiedTopology: true }, () => {
+    console.log('Подключено к базе данных!');
+  })
 })
+
+// app.listen(PORT, () => {
+//   console.log('Сервер газанул ', PORT)
+// })
