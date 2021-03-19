@@ -1,27 +1,29 @@
 const router = require('express').Router();
 const Client = require('../models/clients');
+const Picture = require('../models/pictures');
 const authenticated = require('./middleware');
-const multer  = require('multer')
+const multer = require('multer')
 
 
-router.get('/', (req, res) => {
+router.get('/', authenticated, (req, res) => {
   res.render('add');
 });
 
 
 const storageConfig = multer.diskStorage({
-  destination: (req, file, cb) =>{
-      cb(null, "uploads");
+  destination: (req, file, cb) => {
+    cb(null, "public/uploads");
   },
-  filename: (req, file, cb) =>{
-      cb(null, file.originalname);
+  filename: (req, file, cb) => {
+    cb(null, Date.now() + file.originalname);
   }
 });
 
-router.use(multer({storage:storageConfig}).single('book'));
+router.use(multer({ storage: storageConfig }).single('photo'));
 
 
-router.post('/', authenticated,  async (req, res) => {
+
+router.post('/', async (req, res) => {
 
   try {
     const newClient = new Client({
@@ -33,9 +35,25 @@ router.post('/', authenticated,  async (req, res) => {
       notes: req.body.notes,
     })
     await newClient.save()
+
+
+    const newPicture = new Picture({
+      title: req.body.title,
+      author: req.body.author,
+      cost: req.body.cost,
+      image: `/uploads/${req.file.filename}`,
+    })
+    await newPicture.save()
+
+    const myPicture = await Picture.findOne({ title: req.body.title })
+    const myClient = await Client.findOne({companyName: req.body.clientName})
+
+    myClient.picturesLiked.push(myPicture._id)
+    await myClient.save()
+
     return res.redirect('/clients')
-    
-  } catch(e) {
+
+  } catch (e) {
     return res.render('error', {
       message: 'Не удалось добавить нового клиента в базу данных.',
     });
