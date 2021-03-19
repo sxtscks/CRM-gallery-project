@@ -1,6 +1,5 @@
 require('dotenv').config()
 const express = require('express')
-const logger = require('morgan');
 const path = require('path');
 const hbs = require('hbs')
 const session = require('express-session')
@@ -48,7 +47,7 @@ app.use(session({
   }
 }))
 
-app.use(logger('dev'))
+
 app.use(express.json())
 app.use(express.urlencoded({ extended: true }))
 app.use(express.static(path.join(process.env.PWD, 'public')))
