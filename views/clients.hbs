@@ -1,3 +1,7 @@
+
+  <script defer src="/js/sort.js"></script>
+
+
 <h1 class='clientsText'>Клиенты</h1>
 <div class='add'>
   <a class="btn btn-primary myButt" href="/add" role="button">Add</a>
@@ -17,23 +21,27 @@
   </div>
 </form>
 
-<div class="myBox">
-<table class="table table-striped">
-  <thead>
-    <tr>
-      <th scope="col">Имя / Компания<span>↑↓</span></th>
-      <th scope="col">Телефон</th>
-      <th scope="col">Дата создания</th>
-    </tr>
-  </thead>
-  <tbody>
-    {{#each Clients}}
-    <tr onclick="window.location.href='/card/{{this._id}}'; return false">
-      <td class="hover-td">{{this.companyName}}</td>
-      <td class="hover-td">{{this.phone}}</td>
-      <td class="hover-td">{{this.createdAt}}</td>
-    </tr>
-    {{/each}}
-  </tbody>
-</table>
+
+<div class='myBox'>
+  <table class="table table-striped">
+    <thead>
+      <tr>
+        <th scope="col">Имя / Компания</th>
+        <th scope="col">Телефон</th>
+        <th scope="col">
+          Дата создания
+          <button type="button" data-sort-create="sortCreateButton">▲</button>
+        </th>
+      </tr>
+    </thead>
+    <tbody>
+      {{#each Clients}}
+      <tr onclick="window.location.href='/card/{{this._id}}'; return false">
+        <td class="hover-td">{{this.companyName}}</td>
+        <td class="hover-td">{{this.phone}}</td>
+        <td class="hover-td">{{this.createdAt}}</td>
+      </tr>
+      {{/each}}
+    </tbody>
+  </table>
 </div>
