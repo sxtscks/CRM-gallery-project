@@ -1,11 +1,13 @@
 const router = require('express').Router();
-const Client = require('../models/clients')
+const Client = require('../models/clients');
+const authenticated = require('./middleware');
 const multer  = require('multer')
 
 
 router.get('/', (req, res) => {
   res.render('add');
 });
+
 
 const storageConfig = multer.diskStorage({
   destination: (req, file, cb) =>{
@@ -19,7 +21,8 @@ const storageConfig = multer.diskStorage({
 router.use(multer({storage:storageConfig}).single('book'));
 
 
-router.post('/', async (req, res) => {
+router.post('/', authenticated,  async (req, res) => {
+
   const newClient = new Client({
     companyName: req.body.clientName,
     phone: req.body.clientPhone,
