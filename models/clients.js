@@ -27,7 +27,7 @@ const clientSchema = new Schema({
     type: Schema.Types.ObjectId,
     ref: 'pictures'
   }],
-  createdAt: String,
+  createdAt: Date,
   updatedAt: Date,
 },
   { timestamps: true }

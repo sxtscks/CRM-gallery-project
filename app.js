@@ -1,4 +1,4 @@
-require('dotenv').config()
+// require('dotenv').config()
 const express = require('express')
 const path = require('path');
 const hbs = require('hbs')
@@ -7,8 +7,8 @@ const FileStore = require('session-file-store')(session)
 const mongoose = require('mongoose')
 // const cors = require('cors')
 
-const dbConnect = require('./config/dbConnect')
-const { dbConnectionURL } = require('./config/dbConfig')
+// const dbConnect = require('./config/dbConnect')
+// const { dbConnectionURL } = require('./config/dbConfig')
 
 
 const indexRouter = require('./routes/index')
@@ -28,7 +28,7 @@ const secretKey = 'SUPER SECRET KEY'
 
 
 
-dbConnect()
+// dbConnect()
 
 app.set('view engine', 'hbs')
 hbs.registerPartials(path.join(process.env.PWD, 'views', 'partials'))
@@ -72,6 +72,7 @@ app.use(async (req, res, next) => {
   res.locals.userId = req.session.userId
   res.locals.name = req.session.name
   res.locals.email = req.session.email
+  res.locals.role = req.session.role
   next()
 })
 
@@ -90,3 +91,4 @@ app.listen(PORT, () => {
   mongoose.connect('mongodb://localhost:27017/CRM-gallery-project', { useNewUrlParser: true, useUnifiedTopology: true }, () => {
     console.log('Подключено к базе данных!');
   })
+})
