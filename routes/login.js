@@ -9,6 +9,9 @@ router.get('/', (req, res) => {
 router.post('/', async (req, res) => {
   const { email, password } = req.body
   if (email && password) {
+    // try{
+
+    // }
     const currentUser = await Manager.findOne({ email })
     if (await bcrypt.compare(password, currentUser.password)) {
       req.session.userId = currentUser._id

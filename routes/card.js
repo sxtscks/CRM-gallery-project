@@ -1,23 +1,24 @@
 const Client = require('../models/clients');
-
 const router = require('express').Router();
+const authenticated = require('./middleware');
 
-router.get('/:id', async (req, res) => {
+
+router.get('/:id', authenticated, async (req, res) => {
   const client = await Client.findById(req.params.id);
   res.render('card', { client });
 });
 
-router.delete('/:id', async (req, res, next) => {
+router.delete('/:id', authenticated, async (req, res, next) => {
   await Client.findByIdAndDelete(req.params.id)
   return res.sendStatus(200);
 })
 
-router.get('/:id/edit', async(req, res) => { 
+router.get('/:id/edit', authenticated, async(req, res) => { 
   const client = await Client.findById(req.params.id);
   res.render('edit', { client });
 });
 
-router.patch('/:id/edit', async(req, res) => {
+router.patch('/:id/edit', authenticated, async(req, res) => {
   const { companyName, phone, contactPerson, personalPhone, email, notes, _id } = req.body;
   console.log('=========', req.body);
 
