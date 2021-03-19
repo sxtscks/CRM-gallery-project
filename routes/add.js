@@ -23,18 +23,24 @@ router.use(multer({storage:storageConfig}).single('book'));
 
 router.post('/', authenticated,  async (req, res) => {
 
-  const newClient = new Client({
-    companyName: req.body.clientName,
-    phone: req.body.clientPhone,
-    contactPerson: req.body.contactPerson,
-    personalPhone: req.body.personalPhone,
-    email: req.body.companyEmail,
-    notes: req.body.notes,
+  try {
+    const newClient = new Client({
+      companyName: req.body.clientName,
+      phone: req.body.clientPhone,
+      contactPerson: req.body.contactPerson,
+      personalPhone: req.body.personalPhone,
+      email: req.body.companyEmail,
+      notes: req.body.notes,
+    })
+    await newClient.save()
+    return res.redirect('/clients')
     
-  })
-  await newClient.save()
+  } catch(e) {
+    return res.render('error', {
+      message: 'Не удалось добавить нового клиента в базу данных.',
+    });
+  }
 
-  return res.redirect('/clients')
 })
 
 module.exports = router;
