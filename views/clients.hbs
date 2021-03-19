@@ -1,25 +1,26 @@
+
   <script defer src="/js/sort.js"></script>
 
 
-<h1>Клиенты</h1>
+<h1 class='clientsText'>Клиенты</h1>
 <div class='add'>
   <a class="btn btn-primary myButt" href="/add" role="button">Add</a>
 </div>
 
-<form action="" method="post">
+<form id="search" method="POST" action="/search">
   <div class='selector'>
-    <select class="form-select" aria-label="Default select example">
-      <option selected>Поиск по</option>
-      <option value="1">Имя</option>
-      <option value="2">Дата создания</option>
-      <option value="3">Автор картины</option>
+    <select name="select" class="form-select" aria-label="Default select example">
+      <option selected value="companyName">Имя</option>
+      <option value="createdAt">Дата создания</option>
+      <option value="Автор картины">Автор картины</option>
     </select>
-    <input type="search" id="form1" class="form-control" />
+    <input name="search" type="search" id="form1" class="form-control" />
     <button type="submit" class="btn btn-primary myButtSearch">
       Поиск
     </button>
   </div>
 </form>
+
 
 <div class='myBox'>
   <table class="table table-striped">
