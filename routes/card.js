@@ -5,6 +5,8 @@ const authenticated = require('./middleware');
 
 router.get('/:id', authenticated, async (req, res) => {
   const client = await Client.findById(req.params.id);
+  console.log(client);
+  
   res.render('card', { client });
 });
 
@@ -20,18 +22,13 @@ router.get('/:id/edit', authenticated, async(req, res) => {
 
 router.patch('/:id/edit', authenticated, async(req, res) => {
   const { companyName, phone, contactPerson, personalPhone, email, notes, _id } = req.body;
-  console.log('=========', req.body);
 
-  // console.log(res.locals.userId);
-
-  // if (String(res.locals.userId) === String(authorId)) {
     try {
       await Client.findByIdAndUpdate(_id, { companyName, phone, contactPerson, personalPhone, email, notes });
       return res.sendStatus(200);
     } catch {
       return res.sendStatus(500);
     }
-  // }
 })
 
 module.exports = router;
