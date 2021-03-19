@@ -44,7 +44,7 @@ app.use(session({
     secret: secretKey,
   }),
   cookie: {
-    // secure: true,
+    secure: true,
     httpOnly: true,
     maxAge: 86400 * 1e3,
   }
