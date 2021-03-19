@@ -7,7 +7,6 @@ const authenticated = require('./middleware');
 router.get('/:id', authenticated, async (req, res) => {
   try {
     const client = await Client.findById(req.params.id).populate('picturesLiked').populate('picturesBought').exec();
-    console.log(client);
     res.render('card', { client });
     
   } catch (error) {
