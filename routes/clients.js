@@ -4,8 +4,15 @@ const authenticated = require('./middleware');
 
 
 router.get('/', authenticated, async (req, res) => {
-  const Clients = await Client.find();
-  res.render('clients', { Clients });
+  try {
+    const Clients = await Client.find();
+    return res.render('clients', { Clients });
+    
+  } catch (error) {
+    return res.render('error', { 
+      message: 'Не удалось загрузить список клиентов.',
+    })
+  }
 });
 
 module.exports = router;
