@@ -1,11 +1,27 @@
 <h1>Клиенты</h1>
+<div class='add'>
+  <a class="btn btn-primary myButt" href="/add" role="button">Add</a>
+</div>
 
-<a class="btn btn-primary" href="/add" role="button">Add</a>
+<form id="search" method="POST" action="/search">
+  <div class='selector'>
+    <select name="select" class="form-select" aria-label="Default select example">
+      <option selected value="companyName">Имя</option>
+      <option value="createdAt">Дата создания</option>
+      <option value="Автор картины">Автор картины</option>
+    </select>
+    <input name="search" type="search" id="form1" class="form-control" />
+    <button type="submit" class="btn btn-primary myButtSearch">
+      Поиск
+    </button>
+  </div>
+</form>
 
+<div class="myBox">
 <table class="table table-striped">
   <thead>
     <tr>
-      <th scope="col">Имя / Компания</th>
+      <th scope="col">Имя / Компания<span>↑↓</span></th>
       <th scope="col">Телефон</th>
       <th scope="col">Дата создания</th>
     </tr>
@@ -20,3 +36,4 @@
     {{/each}}
   </tbody>
 </table>
+</div>

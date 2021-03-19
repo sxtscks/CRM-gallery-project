@@ -1,5 +1,3 @@
-const { startSession } = require("../../models/manager");
-
 const editForm = document.querySelector('#editForm');
 
 if (editForm) {
@@ -51,27 +49,27 @@ deleteButton.addEventListener('click', async (event) => {
 }
 
 
-// const search = document.querySelector('#search');
+const search = document.querySelector('#search');
 
 // if (search) {
 //   search.addEventListener('submit', async (event) => {
 //     event.preventDefault()
 //     const query = event.target.value
 //     console.log(query);
-//     const response = await fetch(`/`, {
+//     const response = (`/clients`, {
 //       method: "POST",
-//       headers: {
-//         'Content-Type': 'application/json',
-//       },
-//       body: JSON.stringify(query),
-//     })
-//     const resBody = await response.json();
-
-//     switch (select.value) {
-//       case 'People':
-//         myData = await satwet.searchAlalal(input.value)
-//         break;
-//     }
+      // headers: {
+      //   'Content-Type': 'application/json',
+      // },
+      // body: JSON.stringify(query),
+    // })
+    // const resBody = await response.json();
+    // return res.sendStatus(200)
+    // switch (select.value) {
+    //   case 'People':
+    //     myData = await satwet.searchAlalal(input.value)
+    //     break;
+    // }
 //   } )
 // }
 

@@ -15,6 +15,7 @@ const signoutRouter = require('./routes/signout')
 const clientsRouter = require('./routes/clients')
 const cardRouter = require('./routes/card')
 const addRouter = require('./routes/add')
+const searchRouter = require('./routes/search')
 
 
 const app = express();
@@ -62,6 +63,7 @@ app.use('/signout', signoutRouter)
 app.use('/clients', clientsRouter)
 app.use('/card', cardRouter)
 app.use('/add', addRouter)
+app.use('/search', searchRouter)
 
 
 app.listen(PORT, () => {
