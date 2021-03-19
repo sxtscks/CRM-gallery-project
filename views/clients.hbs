@@ -1,22 +1,47 @@
-<h1>Клиенты</h1>
 
-<a class="btn btn-primary" href="/add" role="button">Add</a>
+  <script defer src="/js/sort.js"></script>
 
-<table class="table table-striped">
-  <thead>
-    <tr>
-      <th scope="col">Имя / Компания</th>
-      <th scope="col">Телефон</th>
-      <th scope="col">Дата создания</th>
-    </tr>
-  </thead>
-  <tbody>
-    {{#each Clients}}
-    <tr onclick="window.location.href='/card/{{this._id}}'; return false">
-      <td class="hover-td">{{this.companyName}}</td>
-      <td class="hover-td">{{this.phone}}</td>
-      <td class="hover-td">{{this.createdAt}}</td>
-    </tr>
-    {{/each}}
-  </tbody>
-</table>
+
+<h1 class='clientsText'>Клиенты</h1>
+<div class='add'>
+  <a class="btn btn-primary myButt" href="/add" role="button">Add</a>
+</div>
+
+<form id="search" method="POST" action="/search">
+  <div class='selector'>
+    <select name="select" class="form-select" aria-label="Default select example">
+      <option selected value="companyName">Имя</option>
+      <option value="createdAt">Дата создания</option>
+      <option value="Автор картины">Автор картины</option>
+    </select>
+    <input name="search" type="search" id="form1" class="form-control" />
+    <button type="submit" class="btn btn-primary myButtSearch">
+      Поиск
+    </button>
+  </div>
+</form>
+
+
+<div class='myBox'>
+  <table class="table table-striped">
+    <thead>
+      <tr>
+        <th scope="col">Имя / Компания</th>
+        <th scope="col">Телефон</th>
+        <th scope="col">
+          Дата создания
+          <button type="button" data-sort-create="sortCreateButton">▲</button>
+        </th>
+      </tr>
+    </thead>
+    <tbody>
+      {{#each Clients}}
+      <tr onclick="window.location.href='/card/{{this._id}}'; return false">
+        <td class="hover-td">{{this.companyName}}</td>
+        <td class="hover-td">{{this.phone}}</td>
+        <td class="hover-td">{{this.createdAt}}</td>
+      </tr>
+      {{/each}}
+    </tbody>
+  </table>
+</div>
