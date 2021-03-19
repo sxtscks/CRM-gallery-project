@@ -1,6 +1,5 @@
-// require('dotenv').config()
+require('dotenv').config()
 const express = require('express')
-const multer  = require('multer')
 const path = require('path');
 const hbs = require('hbs')
 const session = require('express-session')
@@ -8,8 +7,8 @@ const FileStore = require('session-file-store')(session)
 const mongoose = require('mongoose')
 // const cors = require('cors')
 
-// const dbConnect = require('./config/dbConnect')
-// const { dbConnectionURL } = require('./config/dbConfig')
+const dbConnect = require('./config/dbConnect')
+const { dbConnectionURL } = require('./config/dbConfig')
 
 
 const indexRouter = require('./routes/index')
@@ -19,17 +18,16 @@ const signoutRouter = require('./routes/signout')
 const clientsRouter = require('./routes/clients')
 const cardRouter = require('./routes/card')
 const addRouter = require('./routes/add')
-const searchRouter = require('./routes/search')
 
 
 const app = express();
-const PORT = 3000
+const PORT = process.env.PORT || 3000
 
 const secretKey = 'SUPER SECRET KEY'
 
 
 
-// dbConnect()
+dbConnect()
 
 app.set('trust proxy', 1)
 app.set('view engine', 'hbs')
@@ -46,7 +44,7 @@ app.use(session({
     secret: secretKey,
   }),
   cookie: {
-    secure: true,
+    // secure: true,
     httpOnly: true,
     maxAge: 86400 * 1e3,
   }
@@ -56,20 +54,18 @@ app.use(session({
 app.use(express.json())
 app.use(express.urlencoded({ extended: true }))
 app.use(express.static(path.join(process.env.PWD, 'public')))
-app.use(multer({dest:"uploads"}).single("filedata"));
 
+app.use((req, res, next) => {
+  res.header('Acces-Control-Allow-Origin', '*')
+  res.header('Acces-Control-Allow-Headers', 'Content-Type, Accept, Authorization')
 
-// app.use((req, res, next) => {
-//   res.header('Acces-Control-Allow-Origin', '*')
-//   res.header('Acces-Control-Allow-Headers', 'Content-Type, Accept, Authorization')
+  if (req.method === "OPTIONS") {
+    res.header('Acces-Control-Allow-Methods', 'GET, POST, PUT, PATCH, DELETE')
+    return res.json()
+  }
 
-//   if (req.method === "OPTIONS") {
-//     res.header('Acces-Control-Allow-Methods', 'GET, POST, PUT, PATCH, DELETE')
-//     return res.json()
-//   }
-
-//   next()
-// })
+  next()
+})
 
 // app.use(cors())
 
@@ -77,7 +73,6 @@ app.use(async (req, res, next) => {
   res.locals.userId = req.session.userId
   res.locals.name = req.session.name
   res.locals.email = req.session.email
-  res.locals.role = req.session.role
   next()
 })
 
@@ -88,12 +83,15 @@ app.use('/signout', signoutRouter)
 app.use('/clients', clientsRouter)
 app.use('/card', cardRouter)
 app.use('/add', addRouter)
-app.use('/search', searchRouter)
 
+
+// app.listen(PORT, () => {
+//   console.log('Server started');
+//   mongoose.connect('mongodb://localhost:27017/CRM-gallery-project', { useNewUrlParser: true, useUnifiedTopology: true }, () => {
+//     console.log('Подключено к базе данных!');
+//   })
+// })
 
 app.listen(PORT, () => {
-  console.log('Server started');
-  mongoose.connect('mongodb://localhost:27017/CRM-gallery-project', { useNewUrlParser: true, useUnifiedTopology: true }, () => {
-    console.log('Подключено к базе данных!');
-  })
+  console.log('Сервер газанул ', PORT)
 })
