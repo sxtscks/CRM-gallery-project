@@ -1,22 +1,40 @@
 <h1>Клиенты</h1>
+<div class='add'>
+  <a class="btn btn-primary myButt" href="/add" role="button">Add</a>
+</div>
 
-<a class="btn btn-primary" href="/add" role="button">Add</a>
+<form action="" method="post">
+  <div class='selector'>
+    <select class="form-select" aria-label="Default select example">
+      <option selected>Поиск по</option>
+      <option value="1">Имя</option>
+      <option value="2">Дата создания</option>
+      <option value="3">Автор картины</option>
+    </select>
+    <input type="search" id="form1" class="form-control" />
+    <button type="submit" class="btn btn-primary myButtSearch">
+      Поиск
+    </button>
+  </div>
+</form>
 
-<table class="table table-striped">
-  <thead>
-    <tr>
-      <th scope="col">Имя / Компания</th>
-      <th scope="col">Телефон</th>
-      <th scope="col">Дата создания</th>
-    </tr>
-  </thead>
-  <tbody>
-    {{#each Clients}}
-    <tr onclick="window.location.href='/card/{{this._id}}'; return false">
-      <td class="hover-td">{{this.companyName}}</td>
-      <td class="hover-td">{{this.phone}}</td>
-      <td class="hover-td">{{this.createdAt}}</td>
-    </tr>
-    {{/each}}
-  </tbody>
-</table>
+<div class='myBox'>
+  <table class="table table-striped">
+    <thead>
+      <tr>
+        <th scope="col">Имя / Компания</th>
+        <th scope="col">Телефон</th>
+        <th scope="col">Дата создания</th>
+      </tr>
+    </thead>
+    <tbody>
+      {{#each Clients}}
+      <tr onclick="window.location.href='/card/{{this._id}}'; return false">
+        <td class="hover-td">{{this.companyName}}</td>
+        <td class="hover-td">{{this.phone}}</td>
+        <td class="hover-td">{{this.createdAt}}</td>
+      </tr>
+      {{/each}}
+    </tbody>
+  </table>
+</div>
