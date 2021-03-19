@@ -73,6 +73,7 @@ app.use(async (req, res, next) => {
   res.locals.userId = req.session.userId
   res.locals.name = req.session.name
   res.locals.email = req.session.email
+  res.locals.role = req.session.role
   next()
 })
 
