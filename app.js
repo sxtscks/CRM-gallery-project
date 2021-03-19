@@ -22,7 +22,7 @@ const searchRouter = require('./routes/search')
 
 
 const app = express();
-const PORT = process.env.PORT || 3000
+const PORT = 3000
 
 const secretKey = 'SUPER SECRET KEY'
 
@@ -92,3 +92,4 @@ app.listen(PORT, () => {
     console.log('Подключено к базе данных!');
   })
 })
+
