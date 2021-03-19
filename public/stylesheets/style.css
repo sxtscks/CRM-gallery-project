@@ -10,7 +10,6 @@
   cursor: pointer;
 } 
 
-<<<<<<< HEAD
 .myBox {
   display: flex;
   justify-content: center;
@@ -31,12 +30,6 @@
   margin: 20px 200px;
   min-height: 40px;
 }
-/* .search {
-  display: flex;
-  justify-content: center;
-  margin: 20px 200px;
-  min-height: 40px;
-} */
 
 .form-select {
   font-size: 17px;
@@ -53,8 +46,6 @@
   font-size: 19px;
 }
 
-=======
 .pictures {
   object-fit: contain;
 }
->>>>>>> origin/pictures
