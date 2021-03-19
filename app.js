@@ -44,7 +44,7 @@ app.use(session({
     secret: secretKey,
   }),
   cookie: {
-    // secure: true,
+    secure: true,
     httpOnly: true,
     maxAge: 86400 * 1e3,
   }
@@ -73,6 +73,7 @@ app.use(async (req, res, next) => {
   res.locals.userId = req.session.userId
   res.locals.name = req.session.name
   res.locals.email = req.session.email
+  res.locals.role = req.session.role
   next()
 })
 
@@ -95,3 +96,4 @@ app.use('/add', addRouter)
 app.listen(PORT, () => {
   console.log('Сервер газанул ', PORT)
 })
+
