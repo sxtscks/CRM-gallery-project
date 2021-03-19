@@ -9,19 +9,9 @@ const options = {
   // В противном случае mongoose пытается дождаться восстановления соездинения, для завершения  операций
 }
 
-
 const { DB_HOST, DB_NAME, DB_PORT, mongoDBurl } = process.env
-
-// const dbConnectionURL = `mongodb://${DB_HOST}:${DB_PORT}/${DB_NAME}`
-
-const dbConnectionURL =
-  process.env.NODE_ENV === 'production' ? mongoDBurl : `mongodb://${DB_HOST}:${DB_PORT}/${DB_NAME}`
-//   
-// mongodb://localhost:27017/p1w3d3
-
+const dbConnectionURL = process.env.NODE_ENV === 'production' ? mongoDBurl : `mongodb://${DB_HOST}:${DB_PORT}/${DB_NAME}`
 const serverURL = 'http://localhost:3000'
-
-
 
 module.exports = {
   dbConnectionURL,
