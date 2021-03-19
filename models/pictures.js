@@ -9,14 +9,8 @@ const picturesSchema = new Schema({
     type: String,
     required: true
   },
-  cost: {
-    type: Number,
-    required: true
-  },
-  image: {
-    data: Buffer,
-    contentType: String
-  },
+  cost: Number,
+  image: String,
 })
 
 const Picture = model('pictures', picturesSchema)

@@ -10,3 +10,42 @@
   cursor: pointer;
 } 
 
+.myBox {
+  display: flex;
+  justify-content: center;
+  margin: 20px 200px;
+  font-size: 17px;
+}
+
+.myButt {
+  margin-top: 20px;
+  margin-left: 200px;
+  width: 90px;
+  font-size: 19px;
+}
+
+.selector {
+  display: flex;
+  justify-content: center;
+  margin: 20px 200px;
+  min-height: 40px;
+}
+
+.form-select {
+  font-size: 17px;
+  width: 200px
+}
+
+.form-control {
+  min-height: 40px;
+  font-size: 17px;
+}
+
+.myButtSearch {
+  width: 100px;
+  font-size: 19px;
+}
+
+.pictures {
+  object-fit: contain;
+}
