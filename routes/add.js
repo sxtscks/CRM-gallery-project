@@ -1,10 +1,12 @@
 const router = require('express').Router();
-const Client = require('../models/clients')
+const Client = require('../models/clients');
+const authenticated = require('./middleware');
+
 router.get('/', (req, res) => {
   res.render('add');
 });
 
-router.post('/', async (req, res) => {
+router.post('/', authenticated,  async (req, res) => {
   const newClient = new Client({
     companyName: req.body.clientName,
     phone: req.body.clientPhone,
