@@ -7,6 +7,7 @@ if (editForm) {
     const formFields = Object.fromEntries((new FormData(editForm)).entries());
     formFields._id = e.target.dataset.clientid;
 
+
     const response = await fetch(`/card/${e.target.dataset.clientid}/edit`, {
       method: 'PATCH',
       headers: {
@@ -22,7 +23,7 @@ if (editForm) {
       return;
     }
 
-    if (response.status === 200) window.location.replace('/clients');
+    if (response.status === 200) window.location.replace(`/card/${e.target.dataset.clientid}`);
     errorDiv.innerText = '';
 
   })
