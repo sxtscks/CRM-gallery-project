@@ -2,7 +2,7 @@ const router = require('express').Router();
 const authenticated = require('./middleware');
 
 
-router.get('/', authenticated, (req, res) => {
+router.get('/', (req, res) => {
   res.render('index');
 });
 
