@@ -31,6 +31,7 @@ dbConnect()
 
 app.set('trust proxy', 1)
 app.set('view engine', 'hbs')
+// app.set('cookieName', 'sid')
 hbs.registerPartials(path.join(process.env.PWD, 'views', 'partials'))
 app.set('views', path.join(process.env.PWD, 'views'))
 
@@ -43,7 +44,7 @@ app.use(session({
     secret: secretKey,
   }),
   cookie: {
-    secure: true,
+    // secure: true,
     httpOnly: true,
     maxAge: 86400 * 1e3,
   }
