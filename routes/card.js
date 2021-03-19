@@ -1,13 +1,18 @@
 const Client = require('../models/clients');
+const Pictures = require('../models/pictures');
 const router = require('express').Router();
 const authenticated = require('./middleware');
 
 
 router.get('/:id', authenticated, async (req, res) => {
-  const client = await Client.findById(req.params.id);
-  console.log(client);
+  try {
+    const client = await Client.findById(req.params.id).populate('picturesLiked').populate('picturesBought').exec();
+    res.render('card', { client });
+    
+  } catch (error) {
+    console.log(error);
+  }
   
-  res.render('card', { client });
 });
 
 router.delete('/:id', authenticated, async (req, res, next) => {
