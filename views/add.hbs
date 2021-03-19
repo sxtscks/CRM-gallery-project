@@ -1,6 +1,6 @@
 <h1>Добавление нового клиента</h1>
 
-<form method="POST">
+<form method="POST" enctype="multipart/form-data">
   <div class="form-group">
     <label for="formGroupExampleInput">Имя</label>
     <input name='clientName' type="text" class="form-control" id="formGroupExampleInput"
@@ -28,10 +28,21 @@
     <label for="exampleFormControlTextarea1">Комментарии</label>
     <textarea name='notes' class="form-control" id="exampleFormControlTextarea1" rows="3"></textarea>
   </div>
+  <h2>Добавление картины</h2>
+  <div class="form-group">
+    <label for="formGroupExampleInput">Название картины</label>
+    <input name='title' type="text" class="form-control" id="formGroupExampleInput" placeholder="Название картины">
+  </div>
+  <div class="form-group">
+    <label for="formGroupExampleInput">Автор</label>
+    <input name='author' type="text" class="form-control" id="formGroupExampleInput" placeholder="Автор">
+  </div>
+  <div class="form-group">
+    <label for="formGroupExampleInput">Стоимость</label>
+    <input name='cost' type="text" class="form-control" id="formGroupExampleInput" placeholder="Стоимость">
+  </div>
   <div class="custom-file">
-  <input type="file" class="custom-file-input" id="customFile">
-  <label class="custom-file-label" for="customFile">Выберите файл</label>
-</div>
+    <input name='photo' type="file" class="custom-file-input" id="customFile">
+  </div>
   <button type="submit" class="btn btn-primary">Добавить</button>
 </form>
-

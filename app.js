@@ -44,7 +44,6 @@ app.use(logger('dev'))
 app.use(express.json())
 app.use(express.urlencoded({ extended: true }))
 app.use(express.static(path.join(process.env.PWD, 'public')))
-// app.use(multer({dest:"uploads"}).single("filedata"));
 
 app.use(async (req, res, next) => {
   res.locals.userId = req.session.userId
