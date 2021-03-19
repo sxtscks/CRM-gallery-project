@@ -1,4 +1,3 @@
-// const Client = require('../models/clients');
 const router = require("express").Router();
 const Client = require("../models/clients");
 const authenticated = require("./middleware");
