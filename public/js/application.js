@@ -1,3 +1,5 @@
+const { startSession } = require("../../models/manager");
+
 const editForm = document.querySelector('#editForm');
 
 if (editForm) {
@@ -6,8 +8,6 @@ if (editForm) {
 
     const formFields = Object.fromEntries((new FormData(editForm)).entries());
     formFields._id = e.target.dataset.clientid;
-
-    console.log(e.target.dataset.clientid);
 
     const response = await fetch(`/card/${e.target.dataset.clientid}/edit`, {
       method: 'PATCH',
@@ -37,9 +37,7 @@ if (deleteButton){
 
 deleteButton.addEventListener('click', async (event) => {
   event.preventDefault()
-  console.log('>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>', event.target);
   const deleteId = event.target.dataset.delete
-  console.log(deleteId);
   const response = await fetch(`/card/${deleteId}`, {
     method: "DELETE"
   })
@@ -51,3 +49,32 @@ deleteButton.addEventListener('click', async (event) => {
   }
 })
 }
+
+
+// const search = document.querySelector('#search');
+
+// if (search) {
+//   search.addEventListener('submit', async (event) => {
+//     event.preventDefault()
+//     const query = event.target.value
+//     console.log(query);
+//     const response = await fetch(`/`, {
+//       method: "POST",
+//       headers: {
+//         'Content-Type': 'application/json',
+//       },
+//       body: JSON.stringify(query),
+//     })
+//     const resBody = await response.json();
+
+//     switch (select.value) {
+//       case 'People':
+//         myData = await satwet.searchAlalal(input.value)
+//         break;
+//     }
+//   } )
+// }
+
+// let select = event.target.select.value
+// let query = req.query.select.value
+// db.clients.find({ [`${select}`]: {$regex: query}})
