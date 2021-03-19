@@ -1,4 +1,5 @@
 const express = require('express')
+const multer  = require('multer')
 const logger = require('morgan');
 const path = require('path');
 const hbs = require('hbs')
@@ -43,13 +44,16 @@ app.use(logger('dev'))
 app.use(express.json())
 app.use(express.urlencoded({ extended: true }))
 app.use(express.static(path.join(process.env.PWD, 'public')))
+// app.use(multer({dest:"uploads"}).single("filedata"));
 
 app.use(async (req, res, next) => {
   res.locals.userId = req.session.userId
   res.locals.name = req.session.name
   res.locals.email = req.session.email
+  res.locals.role = req.session.role
   next()
 })
+
 
 app.use('/', indexRouter);
 app.use('/signup', signupRouter)
