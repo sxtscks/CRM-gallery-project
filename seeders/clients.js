@@ -1,67 +1,68 @@
 const { connect, connection } = require("mongoose");
 const Client = require('../models/clients');
 const Picture = require('../models/pictures');
+const Manager = require('../models/manager')
 
 async function main() {
-  await connect('mongodb://localhost:27017/CRM-gallery-project', {
+  await connect('mongodb+srv://Admin:nestic123@cluster0.nzuq1.mongodb.net/myFirstDatabase?retryWrites=true&w=majoritymongodb://localhost:27017/CRM-gallery-project', {
     useNewUrlParser: true,
     useUnifiedTopology: true,
     useCreateIndex: true,
     useFindAndModify: false
   });
-  
+
   const pictures = [
     {
       title: "Боровск. Ледоход",
       author: "Вера Ельницкая",
-      cost: 80000,
+      cost: '80000',
       image: "/img/elnitskaya/borovsk.jpg",
     },
     {
       title: "Яхты",
       author: "Вера Ельницкая",
-      cost: 90000,
+      cost: '90000',
       image: "/img/elnitskaya/yahti.jpg"
     },
     {
       title: "Кораблик",
       author: "Вера Ельницкая",
-      cost: 80000,
+      cost: '80000',
       image: "/img/elnitskaya/korablik.jpg"
     },
     {
       title: "Пастырь",
       author: "Игорь Сапунков",
-      cost: 100000,
+      cost: '100000',
       image: "/img/sapunkov/pastir.jpg"
     },
     {
       title: "Сугробы",
       author: "Игорь Сапунков",
-      cost: 70000,
+      cost: '70000',
       image: "/img/sapunkov/sugrobi.jpg"
     },
     {
       title: "Окуни",
       author: "Никита Павлов",
-      cost: 70000,
+      cost: '70000',
       image: "/img/pavlov/okuni.jpg"
     },
     {
       title: "Москва. Черемушки",
       author: "Никита Павлов",
-      cost: 90000,
+      cost: '90000',
       image: "/img/pavlov/omoskva_cheremushki.jpg"
     },
     {
       title: "Мамины цветы",
       author: "Никита Павлов",
-      cost: 90000,
+      cost: '90000',
       image: "/img/pavlov/mamini_cveti.jpg"
     },
-    
+
   ];
-  
+
   await Picture.insertMany(pictures);
   const picturesDB = await Picture.find();
 
@@ -127,16 +128,27 @@ async function main() {
       picturesBought: [],
     },
   ];
-  
-  
-  
+
+
+
   await Client.insertMany(clients);
-  
+
+  const managers = [
+    {
+      name: 'Admin',
+      email: 'admin@mail.ru',
+      password: '12345',
+      role: true,
+    }
+  ]
+
+  await Manager.insertMany(managers);
+
   // const clientsDB = await Client.find();
-  
+
   // console.log(picturesDB[0]._id);
   // console.log(clientsDB[0].picturesLiked);
-  
+
   // clientsDB[0].picturesLiked.push(picturesDB[0]._id)
   // clientsDB[0].picturesLiked.push(picturesDB[1]._id)
   // clientsDB[0].picturesLiked.push(picturesDB[2]._id)
@@ -153,4 +165,4 @@ async function main() {
   await connection.close();
 }
 
-main();
+// main();

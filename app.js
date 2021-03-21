@@ -30,7 +30,9 @@ const secretKey = 'SUPER SECRET KEY'
 
 // dbConnect()
 
+// app.set('trust proxy', 1)
 app.set('view engine', 'hbs')
+// app.set('cookieName', 'sid')
 hbs.registerPartials(path.join(process.env.PWD, 'views', 'partials'))
 app.set('views', path.join(process.env.PWD, 'views'))
 
@@ -43,6 +45,7 @@ app.use(session({
     secret: secretKey,
   }),
   cookie: {
+    // secure: true,
     httpOnly: true,
     maxAge: 86400 * 1e3,
   }
@@ -53,18 +56,17 @@ app.use(express.json())
 app.use(express.urlencoded({ extended: true }))
 app.use(express.static(path.join(process.env.PWD, 'public')))
 
+app.use((req, res, next) => {
+  res.header('Acces-Control-Allow-Origin', '*')
+  res.header('Acces-Control-Allow-Headers', 'Content-Type, Accept, Authorization')
 
-// app.use((req, res, next) => {
-//   res.header('Acces-Control-Allow-Origin', '*')
-//   res.header('Acces-Control-Allow-Headers', 'Content-Type, Accept, Authorization')
+  if (req.method === "OPTIONS") {
+    res.header('Acces-Control-Allow-Methods', 'GET, POST, PUT, PATCH, DELETE')
+    return res.json()
+  }
 
-//   if (req.method === "OPTIONS") {
-//     res.header('Acces-Control-Allow-Methods', 'GET, POST, PUT, PATCH, DELETE')
-//     return res.json()
-//   }
-
-//   next()
-// })
+  next()
+})
 
 // app.use(cors())
 
@@ -86,9 +88,15 @@ app.use('/add', addRouter)
 app.use('/search', searchRouter)
 
 
+
 app.listen(PORT, () => {
   console.log('Server started');
   mongoose.connect('mongodb://localhost:27017/CRM-gallery-project', { useNewUrlParser: true, useUnifiedTopology: true }, () => {
     console.log('Подключено к базе данных!');
   })
 })
+
+// app.listen(PORT, () => {
+//   console.log('Сервер газанул ', PORT)
+// })
+

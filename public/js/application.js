@@ -49,4 +49,16 @@ deleteButton.addEventListener('click', async (event) => {
 })
 }
 
+const search = document.querySelector('.form-select');
+const inputData = document.querySelector('#form1');
 
+search?.addEventListener('change', async (event) => {
+  event.preventDefault()
+  if (event.target.value === "createdAt") {
+    inputData.type = "date"
+    inputData.name = "date"
+  } else {
+    inputData.type = "search"
+    inputData.name = "search"
+  }
+})
