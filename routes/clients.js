@@ -6,8 +6,12 @@ const authenticated = require('./middleware');
 router.get('/', authenticated, async (req, res) => {
 
   try {
-    const Clients = await Client.find();
-    return res.render('clients', { Clients });
+    const Clients = await Client.find().sort({ createdAt: -1});
+
+    // const ClientsArr = Clients.map((el) => ({...el, createdAt: el.createdAt.toLocaleString('ru-RU')}));
+    // console.log(ClientsArr[0]);
+    
+    return res.render('clients', { Clients});
     
   } catch (error) {
     return res.render('error', { 

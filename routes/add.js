@@ -31,25 +31,30 @@ router.post('/', async (req, res) => {
       phone: req.body.clientPhone,
       contactPerson: req.body.contactPerson,
       personalPhone: req.body.personalPhone,
-      email: req.body.companyEmail,
+      email: req.body.companyEmail.trim(),
       notes: req.body.notes,
+      createdAt: new Date().toLocaleString('ru-RU')
     })
     await newClient.save()
 
-
-    const newPicture = new Picture({
-      title: req.body.title,
-      author: req.body.author,
-      cost: req.body.cost,
-      image: `/uploads/${req.file.filename}`,
-    })
-    await newPicture.save()
-
-    const myPicture = await Picture.findOne({ title: req.body.title })
-    const myClient = await Client.findOne({companyName: req.body.clientName})
-
-    myClient.picturesLiked.push(myPicture._id)
-    await myClient.save()
+    try {
+      const newPicture = new Picture({
+        title: req.body.title,
+        author: req.body.author,
+        cost: req.body.cost,
+        image: `/uploads/${req.file.filename}`,
+      })
+      await newPicture.save();
+  
+      const myPicture = await Picture.findOne({ title: req.body.title })
+      const myClient = await Client.findOne({companyName: req.body.clientName})
+  
+      myClient.picturesLiked.push(myPicture._id)
+      await myClient.save()
+      
+    } catch (error) {
+      console.log('Нет добавленной картинки')
+    }
 
     return res.redirect('/clients')
 
