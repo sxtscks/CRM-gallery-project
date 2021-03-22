@@ -21,7 +21,7 @@ router.post('/', async (req, res) => {
 
       return res.redirect('/')
     }
-    return res.status(418).redirect('/entries/login')
+    return res.status(418).redirect('/login')
   }
 })
 
