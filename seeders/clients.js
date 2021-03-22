@@ -2,9 +2,10 @@ const { connect, connection } = require("mongoose");
 const Client = require('../models/clients');
 const Picture = require('../models/pictures');
 const Manager = require('../models/manager')
+// await connect('mongodb+srv://Admin:nestic123@cluster0.nzuq1.mongodb.net/myFirstDatabase?retryWrites=true&w=majoritymongodb://localhost:27017/CRM-gallery-project', {
 
 async function main() {
-  await connect('mongodb+srv://Admin:nestic123@cluster0.nzuq1.mongodb.net/myFirstDatabase?retryWrites=true&w=majoritymongodb://localhost:27017/CRM-gallery-project', {
+  await connect('mongodb://localhost:27017/CRM-gallery-project', {
     useNewUrlParser: true,
     useUnifiedTopology: true,
     useCreateIndex: true,
@@ -76,6 +77,7 @@ async function main() {
       notes: 'занимаются поставкой мебели из Италии, но заинтересованность в сотрудничестве есть. Были бы рады получить презентацию и образцы.',
       picturesLiked: [picturesDB[0]._id, picturesDB[1]._id],
       picturesBought: [picturesDB[3]._id],
+      createdAt: new Date().toLocaleString('ru-RU')
     },
     {
       companyName: "Технология дизайна",
@@ -86,6 +88,7 @@ async function main() {
       notes: 'до конца слушать не стала. Звонить на городской тел.',
       picturesLiked: [picturesDB[4]._id, picturesDB[5]._id],
       picturesBought: [],
+      createdAt: new Date().toLocaleString('ru-RU')
     },
     {
       companyName: 'АртБюро',
@@ -96,6 +99,7 @@ async function main() {
       notes: '',
       picturesLiked: [],
       picturesBought: [],
+      createdAt: new Date().toLocaleString('ru-RU')
     },
     {
       companyName: 'Биард',
@@ -106,6 +110,7 @@ async function main() {
       notes: 'Выслал каталог 7.10.2014. Слушала с интересом. Приятная в общении',
       picturesLiked: [],
       picturesBought: [],
+      createdAt: new Date().toLocaleString('ru-RU')
     },
     {
       companyName: 'Топдом',
@@ -116,6 +121,7 @@ async function main() {
       notes: 'решения принимает только руководитель. Рассмотрят наше предложение',
       picturesLiked: [],
       picturesBought: [],
+      createdAt: new Date().toLocaleString('ru-RU')
     },
     {
       companyName: 'Пентадизайн',
@@ -126,6 +132,7 @@ async function main() {
       notes: 'Очень доброжелательна. Заинтересовали возможности сотрудничества. После отправки информ. На электронку просила связаться по мобильн. Тел.',
       picturesLiked: [],
       picturesBought: [],
+      createdAt: new Date().toLocaleString('ru-RU')
     },
   ];
 
@@ -165,4 +172,4 @@ async function main() {
   await connection.close();
 }
 
-// main();
+main();

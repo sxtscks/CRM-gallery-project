@@ -56,17 +56,17 @@ app.use(express.json())
 app.use(express.urlencoded({ extended: true }))
 app.use(express.static(path.join(process.env.PWD, 'public')))
 
-app.use((req, res, next) => {
-  res.header('Acces-Control-Allow-Origin', '*')
-  res.header('Acces-Control-Allow-Headers', 'Content-Type, Accept, Authorization')
+// app.use((req, res, next) => {
+//   res.header('Acces-Control-Allow-Origin', '*')
+//   res.header('Acces-Control-Allow-Headers', 'Content-Type, Accept, Authorization')
 
-  if (req.method === "OPTIONS") {
-    res.header('Acces-Control-Allow-Methods', 'GET, POST, PUT, PATCH, DELETE')
-    return res.json()
-  }
+//   if (req.method === "OPTIONS") {
+//     res.header('Acces-Control-Allow-Methods', 'GET, POST, PUT, PATCH, DELETE')
+//     return res.json()
+//   }
 
-  next()
-})
+//   next()
+// })
 
 // app.use(cors())
 
